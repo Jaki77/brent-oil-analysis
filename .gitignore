@@ -1,0 +1,24 @@
+# Data
+*.csv
+*.xlsx
+*.json
+data/
+data/raw/
+data/processed/
+# Python
+__pycache__/
+*.py[cod]
+# Virtual Environment
+venv/
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+# Reports
+reports/
+# Jupyter
+.ipynb_checkpoints/
+# OS
+Thumbs.db
