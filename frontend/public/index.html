@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+    <meta name="theme-color" content="#2c3e50" />
+    <meta name="description" content="Brent Oil Price Analysis Dashboard - Bayesian Change Point Detection and Geopolitical Event Impact Analysis" />
+    <meta name="keywords" content="Brent Oil, Bayesian Analysis, Change Point Detection, Energy Markets, Geopolitical Events, OPEC" />
+    <meta name="author" content="Birhan Energies Consulting" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Brent Oil Price Analysis Dashboard" />
+    <meta property="og:description" content="Interactive visualization of Brent oil price dynamics, change point detection, and event impact analysis" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.png" />
+    <meta property="og:url" content="https://birhan-energies.com/dashboard" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Brent Oil Price Analysis Dashboard" />
+    <meta name="twitter:description" content="Interactive visualization of Brent oil price dynamics, change point detection, and event impact analysis" />
+    <meta name="twitter:image" content="%PUBLIC_URL%/twitter-card.png" />
+    
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Brent Oil Dashboard" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    
+    <!-- Preconnect to API -->
+    <link rel="preconnect" href="%REACT_APP_API_URL%" />
+    <link rel="dns-prefetch" href="%REACT_APP_API_URL%" />
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png" />
+    
+    <title>Brent Oil Price Analysis | Birhan Energies</title>
+    
+    <!-- Inline Critical CSS -->
+    <style>
+      /* Critical path styles - loaded before main CSS */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        background-color: #f8f9fa;
+        color: #2c3e50;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      .app-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        color: white;
+        padding: 20px;
+        text-align: center;
+      }
+      
+      .loading-spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin-bottom: 20px;
+      }
+      
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+      
+      .loading-title {
+        font-size: 1.8rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      
+      .loading-subtitle {
+        font-size: 1rem;
+        opacity: 0.9;
+        max-width: 600px;
+      }
+      
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+      }
+      
+      /* Ensure root container is visible */
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+    
+    <!-- Environment Variables -->
+    <script>
+      window.env = {
+        REACT_APP_API_URL: '%REACT_APP_API_URL%',
+        REACT_APP_VERSION: '%REACT_APP_VERSION%',
+        REACT_APP_ENVIRONMENT: '%REACT_APP_ENVIRONMENT%'
+      };
+    </script>
+  </head>
+  
+  <body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="sr-only">Skip to main content</a>
+    
+    <noscript>
+      <div style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+        font-family: 'Inter', sans-serif;
+      ">
+        <h1 style="font-size: 2rem; margin-bottom: 20px;">JavaScript Required</h1>
+        <p style="font-size: 1.1rem; max-width: 600px; margin-bottom: 30px;">
+          The Brent Oil Price Analysis Dashboard requires JavaScript to function properly. 
+          Please enable JavaScript in your browser settings to view this dashboard.
+        </p>
+        <div style="background: rgba(255,255,255,0.1); padding: 20px; border-radius: 8px; max-width: 600px;">
+          <h2 style="font-size: 1.3rem; margin-bottom: 15px;">Dashboard Features:</h2>
+          <ul style="list-style: none; padding: 0; text-align: left;">
+            <li style="margin-bottom: 10px;">📊 Interactive Brent Oil Price Charts</li>
+            <li style="margin-bottom: 10px;">📍 Bayesian Change Point Detection</li>
+            <li style="margin-bottom: 10px;">🌍 Geopolitical Event Impact Analysis</li>
+            <li style="margin-bottom: 10px;">📈 Volatility Regime Monitoring</li>
+            <li style="margin-bottom: 10px;">📱 Responsive Mobile Design</li>
+          </ul>
+        </div>
+        <p style="margin-top: 40px; font-size: 0.9rem; opacity: 0.8;">
+          Birhan Energies Consulting | Data-Driven Energy Insights
+        </p>
+      </div>
+    </noscript>
+    
+    <!-- React Root -->
+    <div id="root">
+      <!-- Loading indicator shown while React boots up -->
+      <div class="app-loading">
+        <div class="loading-spinner"></div>
+        <h1 class="loading-title">Brent Oil Price Analysis</h1>
+        <p class="loading-subtitle">
+          Loading dashboard with Bayesian change point detection and event impact analysis...
+        </p>
+        <p style="margin-top: 40px; font-size: 0.9rem; opacity: 0.8;">
+          Birhan Energies Consulting
+        </p>
+      </div>
+    </div>
+    
+    <!-- Preload critical assets -->
+    <link rel="preload" href="%PUBLIC_URL%/static/css/main.css" as="style" />
+    <link rel="preload" href="%PUBLIC_URL%/static/js/main.js" as="script" />
+    
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Brent Oil Price Analysis Dashboard",
+        "description": "Interactive dashboard for analyzing Brent crude oil price dynamics, Bayesian change point detection, and geopolitical event impact analysis",
+        "applicationCategory": "Data Visualization, Financial Analysis",
+        "operatingSystem": "Any",
+        "browserRequirements": "Requires JavaScript. HTML5, CSS3, and modern browser support.",
+        "creator": {
+          "@type": "Organization",
+          "name": "Birhan Energies Consulting",
+          "url": "https://birhan-energies.com"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Historical Brent oil price visualization (1987-2022)",
+          "Bayesian change point detection",
+          "Geopolitical event correlation",
+          "Volatility regime analysis",
+          "Impact quantification",
+          "Interactive filtering"
+        ],
+        "screenshot": "https://birhan-energies.com/dashboard/screenshot.png",
+        "softwareVersion": "2.0.0",
+        "datePublished": "2026-02-12",
+        "dateModified": "2026-02-12"
+      }
+    </script>
+    
+    <!-- Performance monitoring -->
+    <script>
+      // Report performance metrics
+      window.addEventListener('load', function() {
+        if (window.performance && window.performance.timing) {
+          const timing = window.performance.timing;
+          const loadTime = timing.loadEventEnd - timing.navigationStart;
+          console.log(`Page load time: ${loadTime}ms`);
+          
+          // Send to analytics in production
+          if (window.env.REACT_APP_ENVIRONMENT === 'production') {
+            // Analytics code would go here
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
