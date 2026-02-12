@@ -18,6 +18,8 @@ venv/
 .DS_Store
 # Reports
 reports/
+# models
+models/
 # Jupyter
 .ipynb_checkpoints/
 # OS
